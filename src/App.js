@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import ChooseFilePage from './Components/ChooseFilePage';  // Correct import
+import AnalyzeHtmlPage from './Components/AnalyzeHtmlPage';
+import LinkCheckPage from './Components/LinkCheckPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Set the default route to ChooseFilePage */}
+        <Route path="/" element={<Navigate to="/choose-file" />} />
+        <Route path="/choose-file" element={<ChooseFilePage />} />
+        <Route path="/analyze" element={<AnalyzeHtmlPage />} />
+        <Route path="/linkcheck" element={<LinkCheckPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
